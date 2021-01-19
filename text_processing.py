@@ -10,22 +10,23 @@ NLP에서 흔히하는 전처리는 소문자 변환, 앞뒤 필요없는 띄어
 
 def normalize(input_string):
     input_string = input_string.lower().strip()
-    words = input_string.split()
 
     normalized_string = ''
-    for s in words[:-1]:
-        normalized_string += s + ' '
-    normalized_string += words[-1]
+    if input_string != '':
+        words = input_string.split()
+        for s in words[:-1]:
+            normalized_string += s + ' '
+        normalized_string += words[-1]
 
     return normalized_string
 
 
 def no_vowels(input_string):
+    vowels = 'aeiouAEIOU'
+
     no_vowel_string = ''
     for c in input_string:
-        if c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u':
-            continue
-        else:
+        if c not in vowels:
             no_vowel_string += c
 
     return no_vowel_string
